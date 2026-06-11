@@ -3,6 +3,36 @@
 ## 📌 Project Overview
 This repository documents a practical network engineering project focused on integrating and troubleshooting a multi-vendor IP Closed-Circuit Television (CCTV) infrastructure. The main objective of this lab was to successfully bridge compatibility, addressing, and protocol gaps between different hardware and software vendors (**Hikvision/HiLook** cameras and a **Uniarch** Network Video Recorder) within a simulated and physical testing environment.
 
+
+
+    %% Nodos del Proyecto
+    NVR[Uniarch NVR <br> 192.168.1.X]:::nvr
+    SW[Cisco Catalyst 2960 <br> VLAN 10 - CCTV]:::sw
+    PC[Management PC <br> SADP Tool / Web GUI]:::pc
+
+    CAM1[HiLook Camera 1 <br> ONVIF Node]:::cam
+    CAM4[Hikvision Camera 2 <br> ONVIF Node]:::cam
+
+    %% Conexiones Físicas
+    NVR ---|Port 0/1 - Access| SW
+    PC ---|Port 0/24 - Access| SW
+    
+    SW ---|Port 0/2 - PoE| CAM1
+    SW ---|Port 0/3 - PoE| CAM2
+   
+
+    %% Detalles de Sincronización y Protocolo
+    subgraph Red Local Segura (Subred 192.168.1.0/24)
+    
+        NVR
+        SW
+        CAM1
+        CAM2
+       
+    end
+
+    style "Red Local Segura (Subred 192.168.1.0/24)" fill:#f1f2f6,stroke:#ced6e0,stroke-dasharray: 5 5'''
+
 ---
 
 ## 🛠️ Infrastructure & Technologies Used
